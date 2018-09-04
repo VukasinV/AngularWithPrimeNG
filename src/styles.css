@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+    height: 920px;
+    background-image: url(assets/images/mekong-green.png);
+    background-repeat: repeat;
+}
+
+@font-face {
+    font-family: 'baskerville';
+    src: url(assets/fonts/LibreBaskerville-Regular.otf) format("opentype");
+  }
+
+* {
+ font-family: 'baskerville';
+}

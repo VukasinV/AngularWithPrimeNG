@@ -1,0 +1,45 @@
+<p-card title="WELCOME BACK" styleClass="ui-card-shadow login">
+    <div class="ui-g">
+
+      <form class="ui-g-12 ui-fluid" [formGroup]="loginForm">
+
+        <div class="ui-inputgroup ui-g-offset-2">
+          <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
+          <input  pInputText type="text"  
+                  placeholder="Username" 
+                  formControlName="username">      
+        </div>
+  
+        <div class="ui-inputgroup ui-g-offset-2" style="margin-top: .5em">
+            <span class="ui-inputgroup-addon"><i class="fa fa-key"></i></span>
+            <input  pInputText 
+                    type="password" 
+                    placeholder="Password" 
+                    formControlName="password">        
+        </div>
+
+      </form>
+
+    </div>
+      <div class="ui-g ui-fluid">
+        <div class="ui-g-offset-2 ui-g-8">
+
+          <button pButton type="submit"
+                  label="LOGIN"
+                  (click)="login()"></button>
+          <span><a [routerLink]="['/register']">I don't have an account</a></span>   
+
+        </div>
+      </div>
+      <!-- <div class="ui-grid" style="margin-top: 10px">
+        <div class="ui-message ui-messages-error ui-corner-all" 
+        *ngIf="loginFormIsInvalid">
+              <span *ngIf="loginForm.hasError('required', 'username')">Username is required</span>
+              <span *ngIf="loginForm.hasError('required', 'password')">Password is required</span>
+          </div>
+      </div> -->
+
+      <div style="font-size: 17px">
+          <p-messages [(value)]="msgs"></p-messages>
+      </div>
+</p-card>

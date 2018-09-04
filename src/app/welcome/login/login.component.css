@@ -1,0 +1,12 @@
+.login {
+    width: 360px;
+    height: 210px;
+    text-align: center;
+    position: absolute;
+    top: 30%; left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.error {
+    border: 1px solid red;
+}
