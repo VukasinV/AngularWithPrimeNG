@@ -1,31 +1,31 @@
 <p-card title="REGISTER" styleClass="ui-card-shadow register">
   <div class="ui-g">
-    <form class="ui-g-12 ui-fluid">
+    <form class="ui-g-12 ui-fluid" [formGroup]="registerForm">
       <div class="ui-inputgroup ui-g-offset-2">
         <span class="ui-inputgroup-addon"><i class="fa fa-user"></i></span>
-        <input type="text" pInputText placeholder="Username">         
+        <input type="text" pInputText placeholder="Username" name="username">         
       </div>
 
       <div class="ui-inputgroup ui-g-offset-2" style="margin-top: .5em">
           <span class="ui-inputgroup-addon"><i class="fa fa-key"></i></span>
-          <input type="password" pInputText placeholder="Password">         
+          <input type="password" pInputText placeholder="Password" name="password">         
       </div>
 
       
       <div class="ui-inputgroup ui-g-offset-2" style="margin-top: .5em">
         <span class="ui-inputgroup-addon"><i class="fa fa-envelope-o"></i></span>
-        <input type="text" pInputText placeholder="Email">         
+        <input type="text" pInputText placeholder="Email" name="email">         
       </div>
 
     <div class="ui-inputgroup ui-g-offset-2" style="margin-top: .5em">
       <span class="ui-inputgroup-addon"><i class="fa fa-user-circle-o"></i></span>
-      <input type="text" pInputText placeholder="Fullname">         
+      <input type="text" pInputText placeholder="Fullname" name="name">         
     </div>
     </form>
   </div>
     <div class="ui-g ui-fluid">
       <div class="ui-g-offset-2 ui-g-8">
-        <button  pButton type="button" label="REGISTER"></button>
+        <button  pButton type="button" label="REGISTER" (click)="register(registerForm)"></button>
         <span><a [routerLink]="['']">I already have an account</a></span>         
       </div>
     </div>

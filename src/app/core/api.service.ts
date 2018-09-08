@@ -8,7 +8,19 @@ import 'rxjs/add/operator/map';
 export class ApiService {
 
   constructor(private http: HttpClient) { }
-  URL_API = environment.URL_API;
+  URL_API = environment.LOCAL_API;
+
+  postUser(user) {
+    return this.http.post(`${this.URL_API}/User`, user);
+  }
+
+  postAccount(credentials) {
+    return this.http.post(`${this.URL_API}/Account`, {},
+  { headers: {
+    'username': credentials.username,
+    'password': credentials.password
+  }});
+}
 
   getProfilesByName (fullname: string) {
     return this.http.get(`${this.URL_API}/Profile?fullname=${fullname}`);

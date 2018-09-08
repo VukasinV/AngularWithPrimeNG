@@ -63,6 +63,7 @@ onBasicUpload(event) {
   uploadPicture(event: any) {
     const formData = new FormData();
     formData.append('fileKey', this.fileToUpload, this.fileToUpload.name);
+    console.log(formData);
     this.api.test(formData).subscribe(data => console.log(data));
   }
 }

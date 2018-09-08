@@ -2,6 +2,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Message } from 'primeng/components/common/api';
 import { Router } from '@angular/router';
+import { ApiService } from '../../core/api.service';
+import { TokenService } from '../../core/token.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +17,7 @@ export class LoginComponent implements OnInit {
   loginFormIsInvalid: boolean;
   msgs: Message[] = [];
 
-  constructor(private fb: FormBuilder, private router: Router) { }
+  constructor(private fb: FormBuilder, private router: Router, private api: ApiService, private tokenService: TokenService) { }
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -26,11 +28,15 @@ export class LoginComponent implements OnInit {
 
   login () {
     if (this.loginForm.invalid) {
-      this.showErrorNotification();
       this.showError();
     } else {
-      console.log('LoginComponent: Go to route /home');
-      this.router.navigate(['home']);
+      this.api.postAccount(this.loginForm.value).subscribe(
+        data => {
+          this.tokenService.setToken(data.toString());
+          this.router.navigate(['/home']); 
+        },
+        error => this.showError()
+      );
     }
   }
 
@@ -42,6 +48,7 @@ export class LoginComponent implements OnInit {
   }
 
   showError() {
+    this.showErrorNotification();
     this.msgs = [];
     this.msgs.push({severity: 'error', summary: 'Check your input'});
 }

@@ -1,7 +1,9 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from './api.service';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './auth.interceptor';
+import { TokenService } from './token.service';
 
 
 @NgModule({
@@ -10,7 +12,15 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule
   ],
   declarations: [],
-  providers: [ApiService],
+  providers: [
+    ApiService, 
+    TokenService,
+    { 
+      provide: HTTP_INTERCEPTORS, 
+      useClass: AuthInterceptor, 
+      multi: true
+    }
+  ],
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() core: CoreModule) {

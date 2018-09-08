@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { Router } from '../../../../node_modules/@angular/router';
 import { ApiService } from '../../core/api.service';
+import { TokenService } from '../../core/token.service';
 
 @Component({
   selector: 'app-header',
@@ -12,7 +13,7 @@ export class HeaderComponent implements OnInit {
 
   items: MenuItem[];
 
-  constructor(private router: Router, private api: ApiService) {
+  constructor(private router: Router, private api: ApiService, private tokenService: TokenService) {
     this.items = [
       {
           label: 'Home',
@@ -31,6 +32,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout() {
+    this.tokenService.clear();
     this.router.navigate(['']);
   }
 

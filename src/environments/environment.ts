@@ -5,5 +5,6 @@
 
 export const environment = {
   production: false,
-  URL_API: 'http://localhost:59105/api'
+  URL_API: 'https://studytogetherbackend.azurewebsites.net/api',
+  LOCAL_API: 'http://localhost:59105/api'
 };
