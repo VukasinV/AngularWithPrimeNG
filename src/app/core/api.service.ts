@@ -8,7 +8,7 @@ import 'rxjs/add/operator/map';
 export class ApiService {
 
   constructor(private http: HttpClient) { }
-  URL_API = environment.LOCAL_API;
+  URL_API = environment.URL_API;
 
   postUser(user) {
     return this.http.post(`${this.URL_API}/User`, user);

@@ -14,6 +14,9 @@ import { FileUploadModule } from 'primeng/fileupload';
 import { CardModule } from 'primeng/card';
 import { GrowlModule } from 'primeng/growl';
 
+// image cropper
+import { ImageCropperModule } from 'ngx-image-cropper';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -27,7 +30,8 @@ import { GrowlModule } from 'primeng/growl';
     ButtonModule,
     FileUploadModule,
     CardModule,
-    GrowlModule
+    GrowlModule,
+    ImageCropperModule
   ],
   declarations: [ProfileComponent,
     ProfileDetailsComponent,

@@ -1,21 +1,44 @@
 <p-growl [value]="msgs" sticky="sticky"></p-growl>
 <div class="ui-grid-row">
-    <div class="ui-g-6 ui-g-offset-3">
-        <p-card>
+    <div>
+        <p-card *ngIf="openEditor">
+
             <div class="ui-grid-row">
-                <img *ngIf="image" [src]="image" class="img-thumbnail ui-g-12" width="300" height="300">
+
+            <input type="file" (change)="fileChangeEvent($event)" accept="image/*" />
+
+            <image-cropper
+                [imageChangedEvent]="imageChangedEvent"
+                [maintainAspectRatio]="true"
+                [aspectRatio]="4 / 3"
+                [resizeToWidth]="128"
+                [onlyScaleDown]="true"
+                format="png"
+                (imageCroppedBase64)="imageCropped($event)"
+                (imageLoaded)="imageLoaded()"
+                (loadImageFailed)="loadImageFailed()"
+                [roundCropper]="true"
+                (imageCroppedFile)="setFile($event)"
+            ></image-cropper>
+
             </div>
         </p-card>
     </div>
 </div>
-<div class="ui-grid-row">
-    <div class="ui-grid-col-12">
-        <p-fileUpload mode="advanced" name="image" accept="image/*" maxFileSize="5000000" customUpload="true" (uploadHandler)="uploadPicture($event)" (onSelect)=prikazi($event)></p-fileUpload>  
-    </div>
-</div>
+
 <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
     <p-panel header="Profile details">
         <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+            <!-- Image cropper -->
+            <div class="ui-grid-row" style="display: flex;justify-content: center;">
+                <img [src]="croppedImage" class="profile-img"/>
+            </div>
+            <div class="ui-grid-row" style="display: flex;justify-content: center;">
+                <button *ngIf="openEditor" pButton type="button" label="Cancel" class="ui-button-rounded ui-button-warning" style="width: 30%" (click)="openPictureEditor()"></button>
+                <button *ngIf="!openEditor" pButton type="button" label="Edit picture" class="ui-button-rounded" style="width: 30%" (click)="openPictureEditor()"></button>
+                <button *ngIf="openEditor" pButton type="button" type="button" label="Save changes" class="ui-button-rounded ui-button-success" style="width: 30%" (click)="uploadPicture()"></button>
+            </div>
+            <!-- Image cropper -->
             <div class="ui-grid-row">
                 <div class="ui-grid-col-2">
                     Username:

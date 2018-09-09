@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild } from '@angular/core';
 import { ApiService } from '../../core/api.service';
 
 @Component({
@@ -11,7 +11,12 @@ export class ReviewListComponent implements OnInit {
 
   image;
   recievedFile: File;
-  constructor(private api: ApiService) { }
+
+  // Ngx image cropper
+  imageChangedEvent: any = '';
+  croppedImage: any = '';
+
+  constructor(private api: ApiService) {}
 
   ngOnInit() {
     this.api.getImage().subscribe(data => {
@@ -22,6 +27,21 @@ export class ReviewListComponent implements OnInit {
       };
       reader.readAsDataURL(this.recievedFile);
     });
+  }
+
+
+
+  fileChangeEvent(event: any): void {
+      this.imageChangedEvent = event;
+  }
+  imageCropped(image: string) {
+      this.croppedImage = image;
+  }
+  imageLoaded() {
+      // show cropper
+  }
+  loadImageFailed() {
+      // show message
   }
 
 }
