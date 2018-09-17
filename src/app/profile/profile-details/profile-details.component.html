@@ -25,16 +25,15 @@
         </p-card>
     </div>
 </div>
-
 <form [formGroup]="userform" (ngSubmit)="onSubmit(userform.value)">
     <p-panel header="Profile details">
         <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
             <!-- Image cropper -->
             <div class="ui-grid-row" style="display: flex;justify-content: center;">
-                <img [src]="croppedImage" class="profile-img"/>
+                <img [src]="croppedImage ? croppedImage:'assets/images/placehoder-image.png'" class="profile-img"/>
             </div>
             <div class="ui-grid-row" style="display: flex;justify-content: center;">
-                <button *ngIf="openEditor" pButton type="button" label="Cancel" class="ui-button-rounded ui-button-warning" style="width: 30%" (click)="openPictureEditor()"></button>
+                <button *ngIf="openEditor" pButton type="button" label="Cancel" class="ui-button-rounded ui-button-warning" style="width: 30%" (click)="closePictureEditor()"></button>
                 <button *ngIf="!openEditor" pButton type="button" label="Edit picture" class="ui-button-rounded" style="width: 30%" (click)="openPictureEditor()"></button>
                 <button *ngIf="openEditor" pButton type="button" type="button" label="Save changes" class="ui-button-rounded ui-button-success" style="width: 30%" (click)="uploadPicture()"></button>
             </div>

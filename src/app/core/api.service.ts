@@ -27,11 +27,19 @@ export class ApiService {
     // .map((data: any) => data as string [])   i Observable<string[]> kao povratni tip
   }
 
-  test(file) {
-    return this.http.post(`${this.URL_API}/Test`, file);
+  postPicture(file) {
+    return this.http.post(`${this.URL_API}/Picture`, file);
+  }
+
+  getOwnerImage(ownerId: number) {
+    return this.http.get(`${this.URL_API}/Picture/${ownerId}`, { 'responseType': 'blob' as 'json' });
   }
 
   getImage() {
-    return this.http.get(`${this.URL_API}/Test`, { 'responseType': 'blob' as 'json' });
+    return this.http.get(`${this.URL_API}/Picture`, { 'responseType': 'blob' as 'json' });
+  }
+
+  getMeetings() {
+    return this.http.get(`${this.URL_API}/Meeting`);
   }
 }

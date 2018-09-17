@@ -13,6 +13,7 @@ import { ReviewListComponent } from './review-list/review-list.component';
 import { FileUploadModule } from 'primeng/fileupload';
 import { CardModule } from 'primeng/card';
 import { GrowlModule } from 'primeng/growl';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 // image cropper
 import { ImageCropperModule } from 'ngx-image-cropper';
@@ -31,7 +32,8 @@ import { ImageCropperModule } from 'ngx-image-cropper';
     FileUploadModule,
     CardModule,
     GrowlModule,
-    ImageCropperModule
+    ImageCropperModule,
+    ProgressSpinnerModule
   ],
   declarations: [ProfileComponent,
     ProfileDetailsComponent,

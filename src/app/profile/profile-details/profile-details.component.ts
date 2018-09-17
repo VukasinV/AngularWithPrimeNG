@@ -74,7 +74,7 @@ export class ProfileDetailsComponent implements OnInit {
     const formData = new FormData();
     formData.append('fileKey', this.fileToUpload, this.fileToUpload.name);
     console.log(formData);
-    this.api.test(formData).subscribe(data => this.openEditor = false);
+    this.api.postPicture(formData).subscribe(data => this.openEditor = false);
   }
 
   openPictureEditor() {
