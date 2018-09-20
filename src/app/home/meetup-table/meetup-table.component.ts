@@ -52,7 +52,7 @@ export class MeetupTableComponent implements OnInit {
         });
     }
 
-    selectCar(event: Event, meeting) {
+    selectMeeting(event: Event, meeting) {
         this.selectedMeeting = meeting;
         this.displayDialog = true;
         event.preventDefault();

@@ -39,85 +39,58 @@
             </div>
             <!-- Image cropper -->
             <div class="ui-grid-row">
-                <div class="ui-grid-col-2">
+                <div class="ui-grid-col-3">
                     Username:
                 </div>
-                <div class="ui-grid-col-6">
-                    <input pInputText type="text" class="maxWidth" [disabled]="true" />
+                <div class="ui-grid-col-9">
+                    <input pInputText type="text" class="maxWidth" [disabled]="true" placeholder="vukasinv"/>
                 </div>
             </div>
             <div class="ui-grid-row">
-                <div class="ui-grid-col-2">
+                <div class="ui-grid-col-3">
                     First Name:
                 </div>
-                <div class="ui-grid-col-6">
-                    <input pInputText type="text" class="maxWidth" formControlName="firstname" placeholder="Required"/>
-                </div>
-                <div class="ui-grid-col-4">
-                    <div class="ui-message ui-messages-error maxWidth" *ngIf="!userform.controls['firstname'].valid&&userform.controls['firstname'].dirty">
-                        <i class="fa fa-close"></i>
-                        Firstname is required
-                    </div>
+                <div class="ui-grid-col-9">
+                    <input pInputText type="text" class="maxWidth" formControlName="firstname" placeholder="Required" value="Vukasin"/>
                 </div>
             </div>
             <div class="ui-grid-row">
-                <div class="ui-grid-col-2">
+                <div class="ui-grid-col-3">
                     Last Name:
                 </div>
-                <div class="ui-grid-col-6">
+                <div class="ui-grid-col-9">
                     <input pInputText type="text" class="maxWidth" formControlName="lastname" placeholder="Required"/>
                 </div>
-                <div class="ui-grid-col-4">
-                    <div class="ui-message ui-messages-error maxWidth" *ngIf="!userform.controls['lastname'].valid&&userform.controls['lastname'].dirty">
-                        <i class="fa fa-close"></i>
-                        Lastname is required
-                    </div>
-                </div>
             </div>
             <div class="ui-grid-row">
-                <div class="ui-grid-col-2">
+                <div class="ui-grid-col-3">
                     Password:
                 </div>
-                <div class="ui-grid-col-6">
+                <div class="ui-grid-col-9">
                     <input pInputText type="password" class="maxWidth" formControlName="password" placeholder="Required - Min(6)"/>
                 </div>
-                <div class="ui-grid-col-4">
-                    <div class="ui-message ui-messages-error maxWidth" *ngIf="!userform.controls['password'].valid&&userform.controls['password'].dirty">
-                        <i class="fa fa-close"></i>
-                        <span *ngIf="userform.controls['password'].errors['required']">Password is required</span>
-                        <span *ngIf="userform.controls['password'].errors['minlength']">Must be longer than 6 characters</span>
-                    </div>
-                </div>
             </div>
             <div class="ui-grid-row">
-                <div class="ui-grid-col-2">
+                <div class="ui-grid-col-3">
                     Description:
                 </div>
-                <div class="ui-grid-col-6">
+                <div class="ui-grid-col-9">
                     <textarea pInputTextarea type="text" formControlName="description" class="maxWidth"></textarea>
                 </div>
-                <div class="ui-grid-col-4"></div>
             </div>
             <div class="ui-grid-row">
-                <div class="ui-grid-col-2">
+                <div class="ui-grid-col-3">
                     Gender:
                 </div>
-                <div class="ui-grid-col-6">
+                <div class="ui-grid-col-9">
                   <p-dropdown [options]="genders" formControlName="gender" [autoWidth]="false"></p-dropdown>
-                </div>
-                <div class="ui-grid-col-4">
-                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!userform.controls['gender'].valid&&userform.controls['gender'].dirty">
-                        <i class="fa fa-close"></i>
-                        Gender is required
-                    </div>
                 </div>
             </div>
             <div class="ui-grid-row">
-                <div class="ui-grid-col-2"></div>
-                <div class="ui-grid-col-6">
+                <div class="ui-grid-col-3"></div>
+                <div class="ui-grid-col-9">
                     <button pButton type="submit" label="Submit" [disabled]="!userform.valid"></button>
                 </div>
-                <div class="ui-grid-col-4"></div>
             </div>
             <div style="text-align:center;margin-top:20px" *ngIf="submitted">
                 Form Submitted
