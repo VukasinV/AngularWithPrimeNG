@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  register(form: NgForm) {
+  register(form: FormGroup) {
     this.api.postUser(form.value).subscribe(
       data => this.navigateToLogin()
     );
