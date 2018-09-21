@@ -25,6 +25,7 @@ export class MeetupTableComponent implements OnInit {
 
     ngOnInit() {
         this.api.getMeetings().subscribe(data => {
+            this.loading = false;
             this.meetings = data as Meeting[];
             this.showOwnerPicture(this.meetings);
         });
@@ -47,7 +48,6 @@ export class MeetupTableComponent implements OnInit {
                     meeting.OwnerPicture = onLoadEvent.target.result;
                 };
                 reader.readAsDataURL(recievedFile);
-                this.loading = false;
             });
         });
     }

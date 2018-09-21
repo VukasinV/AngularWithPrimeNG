@@ -71,26 +71,27 @@
     </ng-template>
 </p-dataView>
 
-<p-dialog header="Meeting details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true" width="500" (onAfterHide)="onDialogHide()">
-    <div class="ui-g" *ngIf="selectedMeeting">
-        <div class="ui-g-12" style="text-align:center">
-            <img [src]="selectedMeeting.OwnerPicture ? selectedMeeting.OwnerPicture:'assets/images/placehoder-image.png'" class="profile-img">
-        </div>
-        <div class="ui-g-4">Description: </div>
-        <div class="ui-g-8">{{selectedMeeting.Description}}</div>
-
-        <div class="ui-g-4">Location: </div>
-        <div class="ui-g-8">{{selectedMeeting.Location}}</div>
-
-        <div class="ui-g-4">Capacity: </div>
-        <div class="ui-g-8">{{selectedMeeting.Capacity}}</div>
-
-        <div class="ui-g-4">StartsAt: </div>
-        <div class="ui-g-8">{{selectedMeeting.StartsAt | date:'MMM d. y. h:mm'}}</div>
-
-        <div class="ui-g-12">Participants: </div>
-
-        <div class="ui-g-12"><button pButton type="button" class="ui-button-warning" label="LEAVE" style="width: 100%"></button></div>
+<p-dialog header="Meeting details" [(visible)]="displayDialog" [responsive]="true" showEffect="fade" [modal]="true"
+  width="500" (onAfterHide)="onDialogHide()">
+  <div class="ui-g" *ngIf="selectedMeeting">
+    <div class="ui-g-12" style="text-align:center">
+      <img [src]="selectedMeeting.OwnerPicture ? selectedMeeting.OwnerPicture:'assets/images/placehoder-image.png'"
+        class="profile-img">
     </div>
-</p-dialog>
+    <div class="ui-g-4">Description: </div>
+    <div class="ui-g-8">{{selectedMeeting.Description}}</div>
 
+    <div class="ui-g-4">Location: </div>
+    <div class="ui-g-8">{{selectedMeeting.Location}}</div>
+
+    <div class="ui-g-4">Capacity: </div>
+    <div class="ui-g-8">{{selectedMeeting.Capacity}}</div>
+
+    <div class="ui-g-4">StartsAt: </div>
+    <div class="ui-g-8">{{selectedMeeting.StartsAt | date:'MMM d. y. h:mm'}}</div>
+
+    <div class="ui-g-12">Participants: </div>
+
+    <div class="ui-g-12"><button pButton type="button" class="ui-button-warning" label="LEAVE" style="width: 100%"></button></div>
+  </div>
+</p-dialog>

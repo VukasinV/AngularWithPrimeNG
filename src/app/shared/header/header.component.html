@@ -1,6 +1,21 @@
 <p-menubar [model]="items">
   <div>
-      <input type="text" pInputText placeholder="Search">
-      <button pButton label="Logout" icon="fa fa-sign-out" (click)="logout()"></button>
+    <p-autoComplete [(ngModel)]="profile"
+                    [suggestions]="filteredProfiles"
+                    (completeMethod)="filterBrands($event)" 
+                    [size]="30"
+                    [minLength]="1"
+                    field="Fullname" 
+                    placeholder="find people"
+                    (onSelect)="showProfile(profile)">
+      <ng-template let-profile pTemplate="item">
+        <div class="ui-helper-clearfix" style="border-bottom:1px solid #D5D5D5">
+          <img [src]="profile.Picture ? profile.Picture:'assets/images/placehoder-image.png'" style="width:40px;display:inline-block;margin:5px 0 2px 5px;border-radius: 50%;"/>
+          <div style="font-size:14px;float:right;margin:10px 10px 0 0" class="p-col">{{profile.Fullname}}</div>
+        </div>
+      </ng-template>
+    </p-autoComplete>
+
+    <button pButton label="Logout" icon="fa fa-sign-out" (click)="logout()"></button>
   </div>
 </p-menubar>
