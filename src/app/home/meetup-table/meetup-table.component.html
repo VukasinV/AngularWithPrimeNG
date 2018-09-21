@@ -3,19 +3,19 @@
     [sortField]="sortField" [sortOrder]="sortOrder">
     <p-header>
         <div class="ui-helper-clearfix">
-            <div class="p-grid">
-                <div class="p-col">
+            <div class="p-grid p-justify-between">
+                <div class="p-col-12 p-md-6 p-lg-4 p-col-align-center">
                     <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By" (onChange)="onSortChange($event)" [autoWidth]="false" [style]="{'min-width':'15em'}"></p-dropdown>
                 </div>
-                <div class="p-col-4 p-md-4 filter-container">
+                <div class="p-col-12 p-md-6 p-lg-3 p-col-align-center" >
+                    <button pButton type="button" label="Create meeting" icon="pi pi-plus" class="ui-button-success"></button>
+                </div>
+                <div class="p-col-12 p-md-6 p-lg-3 filter-container p-col-align-center">
                     <div style="position:relative">
                         <input type="search" pInputText placeholder="Search by description" (keyup)="dv.filter($event.target.value)">
                     </div>
                 </div>
-                <div class="p-col-2 p-md-2" style="text-align:right">
-                    <button pButton type="button" label="Create meeting" icon="pi pi-plus" class="ui-button-success"></button>
-                </div>
-                <div class="p-col-2 p-md-2" style="text-align:right">
+                <div class="p-col-12 p-md-6 p-lg-2 p-col-align-center" style="text-align:right;padding:0;">
                     <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
                 </div>
             </div>
@@ -23,25 +23,38 @@
     </p-header>
     <ng-template let-meeting pTemplate="listItem">
         <div class="p-grid" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
-            <div class="p-col" style="text-align:center">
+            <div class="p-col-12 p-md-6 p-lg-3">
                 <img [src]="meeting.OwnerPicture ? meeting.OwnerPicture:'assets/images/placehoder-image.png'" class="profile-img">
             </div>
-            <div class="ui-g-12 ui-md-8 car-details">
-                <div class="p-grid">
-                    <div class="p-col-2 p-sm-6">Description: </div>
-                    <div class="p-col-10 p-sm-6"><b>{{meeting.Description}}</b></div>
-
-                    <div class="p-col-12 p-sm-6">Location: </div>
-                    <div class="p-col-10 p-sm-6"><b>{{meeting.Location}}</b></div>
-
-                    <div class="p-col-2 p-sm-6">Capacity: </div>
-                    <div class="p-col-10 p-sm-6"><b>{{meeting.Capacity}}</b></div>
-
-                    <div class="p-col-2 p-sm-6">StartsAt: </div>
-                    <div class="p-col-10 p-sm-6"><b>{{meeting.StartsAt | date:'MMM d. y. h:mm'}}</b></div>
+            <div class="p-col-12 p-md-6 p-lg-8 p-col-align-center">
+                <div class="p-grid p-dir-col">
+                    <div class="p-grid">
+                        <div class="p-col-fixed" style="width: 170px">Description:</div>
+                        <div class="p-col">
+                            <b>{{meeting.Description}}</b>
+                        </div>
+                    </div>
+                    <div class="p-grid">
+                        <div class="p-col-fixed" style="width: 170px">Location:</div>
+                        <div class="p-col">
+                            <b>{{meeting.Location}}</b>
+                        </div>
+                    </div>
+                    <div class="p-grid">
+                        <div class="p-col-fixed" style="width: 170px">Capacity:</div>
+                        <div class="p-col">
+                            <b>{{meeting.Capacity}}</b>
+                        </div>
+                    </div>
+                    <div class="p-grid">
+                        <div class="p-col-fixed" style="width: 170px">StartsAt:</div>
+                        <div class="p-col">
+                                <b>{{meeting.StartsAt | date:'MMM d. y. h:mm'}}</b>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div class="ui-g-12 ui-md-1 search-icon">
+            <div class="p-col-12 p-md-6 p-lg-1 search-icon" style="text-align:center;">
                 <button pButton type="button" icon="pi pi-search" (click)="selectMeeting($event, meeting)"></button>
             </div>
         </div>
