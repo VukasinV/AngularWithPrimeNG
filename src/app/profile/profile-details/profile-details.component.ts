@@ -2,7 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { Message, SelectItem } from 'primeng/components/common/api';
 import { ApiService } from '../../core/api.service';
-import { Profile } from 'selenium-webdriver/firefox';
+import { Profile } from '../../models/profile.model';
 
 @Component({
   selector: 'app-profile-details',
@@ -33,13 +33,12 @@ export class ProfileDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.getImage();
-    this.api.getMyProfile().subscribe(data => this.myProfile=data as Profile);
+    this.api.getMyProfile().subscribe(data => this.myProfile = data as Profile);
     
     this.userform = this.fb.group({
       'username': new FormControl('', Validators.required),
       'fullname': new FormControl('', Validators.required),
       'description': new FormControl(''),
-      'gender': new FormControl('', Validators.required),
     });
 
     this.genders = [];

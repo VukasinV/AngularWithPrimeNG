@@ -31,6 +31,10 @@ export class ApiService {
     return this.http.get(`${this.URL_API}/myprofile`);
   }
 
+  getAllProfiles () {
+    return this.http.get(`${this.URL_API}/profile`);
+  }
+
   postPicture(file) {
     return this.http.post(`${this.URL_API}/Picture`, file);
   }

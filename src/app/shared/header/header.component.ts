@@ -3,6 +3,7 @@ import { MenuItem } from 'primeng/api';
 import { Router } from '../../../../node_modules/@angular/router';
 import { ApiService } from '../../core/api.service';
 import { TokenService } from '../../core/token.service';
+import { Profile } from '../../models/profile.model';
 
 @Component({
   selector: 'app-header',
@@ -15,8 +16,8 @@ export class HeaderComponent implements OnInit {
   items: MenuItem[];
 
   // Search profiles
-  filteredProfiles = [];
-  profiles;
+  filteredProfiles: any[];
+  profiles: Profile[];
   profile;
 
   constructor(private router: Router, private api: ApiService, private tokenService: TokenService) {
@@ -35,6 +36,7 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.api.getAllProfiles().subscribe(data => this.profiles = data as Profile[]);
   }
 
   logout() {
@@ -46,9 +48,25 @@ export class HeaderComponent implements OnInit {
     this.filteredProfiles = [];
     for (let i = 0; i < this.profiles.length; i++) {
       let profile = this.profiles[i];
-      if (profile.toLowerCase().indexOf(event.query.toLowerCase()) == 0) {
+      if (profile.Fullname.toLowerCase().indexOf(event.query.toLowerCase()) == 0) {
+        this.showProfilePicture(profile);
         this.filteredProfiles.push(profile);
       }
     }
+  }
+
+  showProfilePicture(profile) {
+    this.api.getOwnerImage(profile.ProfileId).subscribe(data => {
+      const recievedFile = data as File;
+      const reader = new FileReader();
+      reader.onload = (onLoadEvent: any) => {
+        profile.Picture = onLoadEvent.target.result;
+      };
+      reader.readAsDataURL(recievedFile);
+    });
+  }
+
+  showProfile(profile) {
+    this.router.navigate([`/profile`]);
   }
 }
