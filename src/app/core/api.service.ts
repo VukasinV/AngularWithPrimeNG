@@ -27,6 +27,10 @@ export class ApiService {
     // .map((data: any) => data as string [])   i Observable<string[]> kao povratni tip
   }
 
+  getMyProfile () {
+    return this.http.get(`${this.URL_API}/myprofile`);
+  }
+
   postPicture(file) {
     return this.http.post(`${this.URL_API}/Picture`, file);
   }

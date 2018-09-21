@@ -7,7 +7,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 import { WelcomeModule } from './welcome/welcome.module';
-import { ProfileModule } from './profile/profile.module';
 
 
 @NgModule({
@@ -21,7 +20,6 @@ import { ProfileModule } from './profile/profile.module';
     CoreModule,
     SharedModule.forRoot(),
     WelcomeModule,
-    ProfileModule
   ],
   providers: [],
   bootstrap: [AppComponent]

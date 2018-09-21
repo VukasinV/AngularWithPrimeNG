@@ -43,49 +43,49 @@
                     Username:
                 </div>
                 <div class="ui-grid-col-9">
-                    <input pInputText type="text" class="maxWidth" [disabled]="true" placeholder="vukasinv"/>
+                    <input pInputText type="text" class="maxWidth" formControlName="username" [disabled]="true" [(ngModel)]="myProfile.Username"/>
                 </div>
             </div>
             <div class="ui-grid-row">
                 <div class="ui-grid-col-3">
-                    First Name:
+                    Full name:
                 </div>
                 <div class="ui-grid-col-9">
-                    <input pInputText type="text" class="maxWidth" formControlName="firstname" placeholder="Required" value="Vukasin"/>
+                    <input pInputText type="text" class="maxWidth" formControlName="fullname" placeholder="Required"[(ngModel)]="myProfile.Fullname"/>
                 </div>
             </div>
-            <div class="ui-grid-row">
+            <!-- <div class="ui-grid-row">
                 <div class="ui-grid-col-3">
                     Last Name:
                 </div>
                 <div class="ui-grid-col-9">
                     <input pInputText type="text" class="maxWidth" formControlName="lastname" placeholder="Required"/>
                 </div>
-            </div>
-            <div class="ui-grid-row">
+            </div> -->
+            <!-- <div class="ui-grid-row">
                 <div class="ui-grid-col-3">
                     Password:
                 </div>
                 <div class="ui-grid-col-9">
                     <input pInputText type="password" class="maxWidth" formControlName="password" placeholder="Required - Min(6)"/>
                 </div>
-            </div>
+            </div> -->
             <div class="ui-grid-row">
                 <div class="ui-grid-col-3">
                     Description:
                 </div>
                 <div class="ui-grid-col-9">
-                    <textarea pInputTextarea type="text" formControlName="description" class="maxWidth"></textarea>
+                    <textarea pInputTextarea type="text" formControlName="description" class="maxWidth"[(ngModel)]="myProfile.Description"></textarea>
                 </div>
             </div>
-            <div class="ui-grid-row">
+            <!-- <div class="ui-grid-row">
                 <div class="ui-grid-col-3">
                     Gender:
                 </div>
                 <div class="ui-grid-col-9">
                   <p-dropdown [options]="genders" formControlName="gender" [autoWidth]="false"></p-dropdown>
                 </div>
-            </div>
+            </div> -->
             <div class="ui-grid-row">
                 <div class="ui-grid-col-3"></div>
                 <div class="ui-grid-col-9">

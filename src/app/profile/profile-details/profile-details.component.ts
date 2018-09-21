@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Validators, FormControl, FormGroup, FormBuilder } from '@angular/forms';
 import { Message, SelectItem } from 'primeng/components/common/api';
 import { ApiService } from '../../core/api.service';
+import { Profile } from 'selenium-webdriver/firefox';
 
 @Component({
   selector: 'app-profile-details',
@@ -10,6 +11,8 @@ import { ApiService } from '../../core/api.service';
   encapsulation: ViewEncapsulation.None
 })
 export class ProfileDetailsComponent implements OnInit {
+
+    myProfile: Profile;
 
     recievedFile: File;
     cancelOrEdit: "Edit picture";
@@ -29,20 +32,20 @@ export class ProfileDetailsComponent implements OnInit {
   constructor(private fb: FormBuilder, private api: ApiService) {}
 
   ngOnInit() {
+    this.getImage();
+    this.api.getMyProfile().subscribe(data => this.myProfile=data as Profile);
+    
     this.userform = this.fb.group({
-      'firstname': new FormControl('', Validators.required),
-      'lastname': new FormControl('', Validators.required),
-      'password': new FormControl('', Validators.compose([Validators.required, Validators.minLength(6)])),
+      'username': new FormControl('', Validators.required),
+      'fullname': new FormControl('', Validators.required),
       'description': new FormControl(''),
       'gender': new FormControl('', Validators.required),
     });
 
     this.genders = [];
-    this.genders.push({label: 'Select Gender', value: ''});
     this.genders.push({label: 'Male', value: 'Male'});
     this.genders.push({label: 'Female', value: 'Female'});
 
-    this.getImage();
   }
 
   onSubmit(value: string) {
