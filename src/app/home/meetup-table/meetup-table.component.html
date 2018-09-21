@@ -4,41 +4,41 @@
     <p-header>
         <div class="ui-helper-clearfix">
             <div class="p-grid">
-                <div class="ui-g-12 ui-md-4">
+                <div class="p-col">
                     <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By" (onChange)="onSortChange($event)" [autoWidth]="false" [style]="{'min-width':'15em'}"></p-dropdown>
                 </div>
-                <div class="ui-g-4 ui-md-4 filter-container">
+                <div class="p-col-4 p-md-4 filter-container">
                     <div style="position:relative">
                         <input type="search" pInputText placeholder="Search by description" (keyup)="dv.filter($event.target.value)">
                     </div>
                 </div>
-                <div class="ui-g-2 ui-md-2" style="text-align:right">
+                <div class="p-col-2 p-md-2" style="text-align:right">
                     <button pButton type="button" label="Create meeting" icon="pi pi-plus" class="ui-button-success"></button>
                 </div>
-                <div class="ui-g-2 ui-md-2" style="text-align:right">
+                <div class="p-col-2 p-md-2" style="text-align:right">
                     <p-dataViewLayoutOptions></p-dataViewLayoutOptions>
                 </div>
             </div>
         </div>
     </p-header>
     <ng-template let-meeting pTemplate="listItem">
-        <div class="ui-g" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
-            <div class="ui-g-12 ui-md-3" style="text-align:center">
+        <div class="p-grid" style="padding: 2em;border-bottom: 1px solid #d9d9d9">
+            <div class="p-col" style="text-align:center">
                 <img [src]="meeting.OwnerPicture ? meeting.OwnerPicture:'assets/images/placehoder-image.png'" class="profile-img">
             </div>
             <div class="ui-g-12 ui-md-8 car-details">
-                <div class="ui-g">
-                    <div class="ui-g-2 ui-sm-6">Description: </div>
-                    <div class="ui-g-10 ui-sm-6"><b>{{meeting.Description}}</b></div>
+                <div class="p-grid">
+                    <div class="p-col-2 p-sm-6">Description: </div>
+                    <div class="p-col-10 p-sm-6"><b>{{meeting.Description}}</b></div>
 
-                    <div class="ui-g-2 ui-sm-6">Location: </div>
-                    <div class="ui-g-10 ui-sm-6"><b>{{meeting.Location}}</b></div>
+                    <div class="p-col-12 p-sm-6">Location: </div>
+                    <div class="p-col-10 p-sm-6"><b>{{meeting.Location}}</b></div>
 
-                    <div class="ui-g-2 ui-sm-6">Capacity: </div>
-                    <div class="ui-g-10 ui-sm-6"><b>{{meeting.Capacity}}</b></div>
+                    <div class="p-col-2 p-sm-6">Capacity: </div>
+                    <div class="p-col-10 p-sm-6"><b>{{meeting.Capacity}}</b></div>
 
-                    <div class="ui-g-2 ui-sm-6">StartsAt: </div>
-                    <div class="ui-g-10 ui-sm-6"><b>{{meeting.StartsAt | date:'MMM d. y. h:mm'}}</b></div>
+                    <div class="p-col-2 p-sm-6">StartsAt: </div>
+                    <div class="p-col-10 p-sm-6"><b>{{meeting.StartsAt | date:'MMM d. y. h:mm'}}</b></div>
                 </div>
             </div>
             <div class="ui-g-12 ui-md-1 search-icon">
