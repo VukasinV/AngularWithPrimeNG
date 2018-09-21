@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './header/header.component';
 import { MenubarModule } from 'primeng/menubar';
 import { ButtonModule } from 'primeng/button';
+import { FormsModule } from '@angular/forms';
 import { AutoCompleteModule } from 'primeng/autocomplete';
 
 @NgModule({
@@ -10,7 +11,8 @@ import { AutoCompleteModule } from 'primeng/autocomplete';
     CommonModule,
     MenubarModule,
     ButtonModule,
-    AutoCompleteModule
+    FormsModule,
+    AutoCompleteModule,
   ],
   exports: [
     HeaderComponent
