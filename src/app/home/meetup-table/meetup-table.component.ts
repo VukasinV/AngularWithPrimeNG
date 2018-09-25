@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { SelectItem } from 'primeng/api';
 import { ApiService } from '../../core/api.service';
 import { Meeting } from '../../models/meeting.model';
+import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'meetup-table',
@@ -13,15 +14,19 @@ export class MeetupTableComponent implements OnInit {
 
     meetings: Meeting[];
     selectedMeeting: Meeting;
+    newMeeting: Meeting;
     displayDialog: boolean;
+    displayDialogMeeting: boolean;
     sortOptions: SelectItem[];
     sortKey: string;
     sortField: string;
     sortOrder: number;
 
+    newMeetingForm: FormGroup;
+
     loading = true;
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private fb: FormBuilder) { }
 
     ngOnInit() {
         this.api.getMeetings().subscribe(data => {
@@ -35,9 +40,20 @@ export class MeetupTableComponent implements OnInit {
             {label: 'Oldest First', value: '!startsAt'},
             {label: 'Description', value: 'description'}
         ];
+
+        if(this.displayDialogMeeting){
+        this.newMeetingForm = this.fb.group({
+            'description': new FormControl('', Validators.required),
+            'location': new FormControl('', Validators.required),
+            'capacity': new FormControl('', Validators.required),
+            'startsAt': new FormControl('', Validators.required),
+          });
+        }
     }
 
-  
+    createMeeting(){
+        this.displayDialogMeeting = true;
+    }
 
     showOwnerPicture(meetings: Meeting[]) {
         meetings.forEach(meeting => {

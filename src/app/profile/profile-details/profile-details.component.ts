@@ -12,7 +12,7 @@ import { Profile } from '../../models/profile.model';
 })
 export class ProfileDetailsComponent implements OnInit {
 
-    myProfile: Profile;
+    myProfile;
 
     recievedFile: File;
     cancelOrEdit: "Edit picture";
@@ -33,7 +33,7 @@ export class ProfileDetailsComponent implements OnInit {
 
   ngOnInit() {
     this.getImage();
-    this.api.getMyProfile().subscribe(data => this.myProfile = data as Profile);
+    this.myProfile = this.api.getMyProfile().subscribe(data => this.myProfile = data as Profile);
     
     this.userform = this.fb.group({
       'username': new FormControl('', Validators.required),

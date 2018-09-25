@@ -8,7 +8,7 @@
                     <p-dropdown [options]="sortOptions" [(ngModel)]="sortKey" placeholder="Sort By" (onChange)="onSortChange($event)" [autoWidth]="false" [style]="{'min-width':'15em'}"></p-dropdown>
                 </div>
                 <div class="p-col-12 p-md-6 p-lg-3 p-col-align-center" >
-                    <button pButton type="button" label="Create meeting" icon="pi pi-plus" class="ui-button-success"></button>
+                    <button pButton type="button" label="Create meeting" icon="pi pi-plus" class="ui-button-success" (click)="createMeeting()"></button>
                 </div>
                 <div class="p-col-12 p-md-6 p-lg-3 filter-container p-col-align-center">
                     <div style="position:relative">
@@ -95,3 +95,4 @@
     <div class="ui-g-12"><button pButton type="button" class="ui-button-warning" label="LEAVE" style="width: 100%"></button></div>
   </div>
 </p-dialog>
+
